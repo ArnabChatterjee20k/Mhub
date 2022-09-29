@@ -1,10 +1,11 @@
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
-import Navbar from "../components/Navbar";
+import Navbar from "./components/Navbar";
 import { ThemeProvider, createTheme } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useMemo } from "react";
-import SearchBar from "../components/SearchBar";
+import { DrawerContextProvider } from "./context/DrawerContext/DrawerContextProvider";
+import SearchBar from "./components/SearchBar";
 function App() {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme:dark)");
 
@@ -15,12 +16,15 @@ function App() {
       },
     });
   }, [prefersDarkMode]);
-
+  
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Navbar links={["Trending", "Category", "Latest"]} />
+      <DrawerContextProvider>
+        <Navbar links={["Trending", "Category", "Latest"]} />
+      </DrawerContextProvider>
       <Container sx={{paddingTop:"10rem"}}>
+        {/* <SearchBar/> */}
       </Container>
     </ThemeProvider>
   );
