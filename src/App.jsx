@@ -5,7 +5,7 @@ import { ThemeProvider, createTheme } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useMemo } from "react";
 import { DrawerContextProvider } from "./context/DrawerContext/DrawerContextProvider";
-import SearchBar from "./components/SearchBar";
+import TopMovies from "./pages/TopMovies";
 function App() {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme:dark)");
 
@@ -23,8 +23,9 @@ function App() {
       <DrawerContextProvider>
         <Navbar links={["Trending", "Category", "Latest"]} />
       </DrawerContextProvider>
-      <Container sx={{paddingTop:"10rem"}}>
+      <Container sx={{paddingTop:"10rem"}} id="container">
         {/* <SearchBar/> */}
+        <TopMovies/>
       </Container>
     </ThemeProvider>
   );
