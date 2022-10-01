@@ -18,6 +18,7 @@ import {
 
 import {useTheme}  from "@mui/material/styles";
 import useMediaQuery  from "@mui/material/useMediaQuery";
+import FilterComponent from "./FilterComponent";
 
 const Navbar = ({ links }) => {
   const theme = useTheme();
@@ -59,8 +60,12 @@ const Navbar = ({ links }) => {
               </IconButton>
             </Stack>
           </Toolbar>
+          <FilterComponent/>
         </AppBar>
         {isMobile && <Drawer />}
+        {/* <Box marginTop="4rem">
+          <FilterComponent/>
+        </Box> */}
       </Box>
   );
 };

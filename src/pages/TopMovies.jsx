@@ -5,13 +5,16 @@ import { fetchTopMovies } from "../utils/networkCall";
 import CardSkeleton from "../components/CardSkeleton";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Progressbar from "../components/Progressbar";
+import FilterComponent from "../components/FilterComponent";
 
 const TopMovies = () => {
   const [movies, setMovies] = useState([]);
   const [nextPage, setNextPage] = useState(1);
+  const [with_original_language,setWith_original_language] = useState("")
+  const [language,setLanguage] = useState("")
+
   const fetchMovies = useCallback(() => {
-    console.log("renderin");
-    const movies = fetchTopMovies(nextPage);
+    const movies = fetchTopMovies({page:nextPage});
     movies.then(
       (data) => {
         setMovies((collection) => collection.concat(data.results));
@@ -27,6 +30,7 @@ const TopMovies = () => {
   const max_pages = import.meta.env.VITE_API_PAGE_LIMIT;
 
   return (
+    <>
     <InfiniteScroll
       scrollableTarget="#container"
       style={{
@@ -60,6 +64,7 @@ const TopMovies = () => {
         )}
       </Grid2>
     </InfiniteScroll>
+    </>
   );
 };
 
