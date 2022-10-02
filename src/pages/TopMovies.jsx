@@ -5,7 +5,6 @@ import { fetchTopMovies } from "../utils/networkCall";
 import CardSkeleton from "../components/CardSkeleton";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Progressbar from "../components/Progressbar";
-import FilterComponent from "../components/FilterComponent";
 
 const TopMovies = () => {
   const [movies, setMovies] = useState([]);

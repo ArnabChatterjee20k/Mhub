@@ -18,7 +18,7 @@ import {
 
 import {useTheme}  from "@mui/material/styles";
 import useMediaQuery  from "@mui/material/useMediaQuery";
-import FilterComponent from "./FilterComponent";
+import FilterComponent from "./Filter/FilterModal";
 
 const Navbar = ({ links }) => {
   const theme = useTheme();

@@ -5,7 +5,7 @@ import { ThemeProvider, createTheme } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useMemo } from "react";
 import { DrawerContextProvider } from "./context/DrawerContext/DrawerContextProvider";
-import FilterComponent from "./components/FilterComponent";
+import FilterComponent from "./components/Filter/FilterModal";
 import TopMovies from "./pages/TopMovies";
 function App() {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme:dark)");
