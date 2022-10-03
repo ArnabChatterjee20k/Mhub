@@ -48,7 +48,7 @@ const Navbar = ({ links }) => {
             sx={{ width: "100%" }}
           >
             {links.map((link) => (
-              <Link underline="none">{link}</Link>
+              <Link underline="none" key={link}>{link}</Link>
             ))}
           </Stack>
             }

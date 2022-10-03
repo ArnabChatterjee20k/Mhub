@@ -79,8 +79,8 @@ const TopMovies = () => {
               </Grid2>
             </>
           ) : (
-            movies.map((movie) => (
-              <Grid2 xs={12} sm={6} md={3} justifyContent={"center"}>
+            movies.map((movie,id) => (
+              <Grid2 xs={12} sm={6} md={3} key={id} justifyContent={"center"}>
                 <MovieCard movie={movie} />
               </Grid2>
             ))

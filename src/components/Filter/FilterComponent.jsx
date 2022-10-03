@@ -16,7 +16,7 @@ export const FilterComponent = ({ filterHeading,setter ,defaultFilter, valuesArr
         name="radio-buttons-group"
       >
         {valuesArray.map(({ name, value}) => (
-          <FormControlLabel value={value} control={<Radio />} label={name}/>
+          <FormControlLabel value={value} control={<Radio />} key={name} label={name}/>
         ))}
       </RadioGroup>
     </FormControl>

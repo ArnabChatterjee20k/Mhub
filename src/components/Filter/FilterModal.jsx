@@ -56,6 +56,7 @@ const FilterModal = () => {
               defaultFilter={filter[option]}
               filterHeading={name}
               valuesArray={values}
+              key={name}
               setter={(e) =>
                 setFilter((filter) => ({ ...filter, [option]: e.target.value }))
               }
