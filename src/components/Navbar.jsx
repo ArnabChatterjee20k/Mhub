@@ -8,7 +8,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
-import SearchBar from "./SearchBar";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 
 import Drawer from "./Drawer";
@@ -18,7 +17,7 @@ import {
 
 import {useTheme}  from "@mui/material/styles";
 import useMediaQuery  from "@mui/material/useMediaQuery";
-import FilterComponent from "./Filter/FilterModal";
+import FilterModal from "./Filter/FilterModal";
 
 const Navbar = ({ links }) => {
   const theme = useTheme();
@@ -60,7 +59,7 @@ const Navbar = ({ links }) => {
               </IconButton>
             </Stack>
           </Toolbar>
-          <FilterComponent/>
+          <FilterModal/>
         </AppBar>
         {isMobile && <Drawer />}
         {/* <Box marginTop="4rem">

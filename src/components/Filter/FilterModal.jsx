@@ -8,27 +8,22 @@ import Close from "@mui/icons-material/Close";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
-import Drawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
+import { FilterComponent } from "./FilterComponent";
+import filters from "../../utils/filters";
+import { useFilter } from "../../context/FIlterContext/FilterContextProvider";
+import {useTheme}  from "@mui/material/styles";
+import useMediaQuery  from "@mui/material/useMediaQuery";
 
-import { getLanguage } from "../../utils/getLanguage";
-
-const FilterComponent = () => {
+const FilterModal = () => {
   const [isOpen, setIsOpen] = useState(true);
-  const [language, setLanguage] = useState(0);
+  const { filter, setFilter } = useFilter();
 
   const handleModal = () => {
     setIsOpen((state) => !state);
   };
 
-  const languages = getLanguage();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <>
@@ -55,51 +50,21 @@ const FilterComponent = () => {
           </Paper>
         </Stack>
 
-        <Stack direction="row" columnGap={2}>
-          <Drawer
-            variant="permanent"
-            anchor="left"
-            sx={{
-              [`& .MuiDrawer-paper`]: {
-                position: "static",
-                boxSizing: "border-box",
-                minHeight:"100vh",
-                minWidth:"10vw",
-                paddingRight:5
+        <Stack direction={isMobile?"column":"row"} columnGap="10em" rowGap="5em"  justifyContent="center" margin={8} flexWrap="wrap">
+          {filters().map(({ name, option, values }) => (
+            <FilterComponent
+              filterHeading={name}
+              valuesArray={values}
+              setter={(e) =>
+                setFilter((filter) => ({ ...filter, [option]: e.target.value }))
               }
-            }}
-          >
-            <List>
-              <ListItem>Hellow</ListItem>
-              <ListItem>Hellow</ListItem>
-              <ListItem>Hellow</ListItem>
-            </List>
-          </Drawer>
-
-          <Stack padding={2}>
-            <FormControl>
-              <FormLabel id="demo-radio-buttons-group-label">
-                Movie Language
-              </FormLabel>
-              <RadioGroup
-                aria-labelledby="demo-radio-buttons-group-label"
-                defaultValue="female"
-                name="radio-buttons-group"
-              >
-                {getLanguage().map(({ name, value }) => (
-                  <FormControlLabel
-                    value={value}
-                    control={<Radio />}
-                    label={name}
-                  />
-                ))}
-              </RadioGroup>
-            </FormControl>
-          </Stack>
+            />
+          ))}
         </Stack>
+
       </Dialog>
     </>
   );
 };
 
-export default FilterComponent;
+export default FilterModal;
