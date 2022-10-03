@@ -12,7 +12,7 @@ export const FilterComponent = ({ filterHeading,setter ,defaultFilter, valuesArr
       <RadioGroup
         onChange={setter}
         aria-labelledby="demo-radio-buttons-group-label"
-        defaultValue={defaultFilter}
+        value={defaultFilter}
         name="radio-buttons-group"
       >
         {valuesArray.map(({ name, value}) => (

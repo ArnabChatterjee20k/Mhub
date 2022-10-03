@@ -15,7 +15,7 @@ import {useTheme}  from "@mui/material/styles";
 import useMediaQuery  from "@mui/material/useMediaQuery";
 
 const FilterModal = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const { filter, setFilter } = useFilter();
 
   const handleModal = () => {
@@ -53,6 +53,7 @@ const FilterModal = () => {
         <Stack direction={isMobile?"column":"row"} columnGap="10em" rowGap="5em"  justifyContent="center" margin={8} flexWrap="wrap">
           {filters().map(({ name, option, values }) => (
             <FilterComponent
+              defaultFilter={filter[option]}
               filterHeading={name}
               valuesArray={values}
               setter={(e) =>
