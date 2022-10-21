@@ -1,16 +1,14 @@
 import React from "react";
 import AppBar from "@mui/material/AppBar";
-import Menu from "@mui/material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu"
 import Drawer from "./Drawer";
+import Account from "./Account";
 import {
   useDrawer,
 } from "../context/DrawerContext/DrawerContextProvider";
@@ -54,11 +52,10 @@ const Navbar = ({ links }) => {
             }
             <Stack direction="row" gap="2em" marginLeft="auto">
               {/* <SearchBar /> */}
-              <IconButton>
-                <AccountCircle fontSize="large" />
-              </IconButton>
+              <Account/>
             </Stack>
           </Toolbar>
+          
           <FilterModal/>
         </AppBar>
         {isMobile && <Drawer />}
